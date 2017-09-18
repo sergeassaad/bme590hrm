@@ -1,4 +1,5 @@
 """test_ReadCSV.py
+tests the readCSV for 2 dummy csv files"
 """
 
 import sys
