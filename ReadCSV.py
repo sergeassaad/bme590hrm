@@ -5,16 +5,17 @@ import sys
 import os
 import csv
 
-def ReadCSV(filename):
+def readCSV(filename):
 	times = []
 	voltages = []
-	file = open(filename, “rb”)
+	file = open(filename, "rb")
 	reader = csv.reader(file)
 	row_count = 0;
 
 	for row in reader:
-		if row_count > 0
-		times.append(row[0])
-		voltages.append(row[1])
+		if row_count > 0:
+			times.append(float(row[0]))
+			voltages.append(float(row[1]))
 		row_count += 1
+
 	return [times, voltages]
