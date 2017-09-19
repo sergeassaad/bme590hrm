@@ -9,15 +9,15 @@ def test_avgHR():
 
 	HRlist = [48, 96, 144]
 
-	list1 = readCSV('ECG_dummy_data_1_avgHR.mat')
+	list1 = readCSV('ECG_dummy_data_1_avgHR.csv')
 	times1 = list1[0]
 	voltages1 = list1[1]
 
-	list2 = readCSV('ECG_dummy_data_2_avgHR.mat')
+	list2 = readCSV('ECG_dummy_data_2_avgHR.csv')
 	times2 = list2[0]
 	voltages2 = list2[1]
 
-	list3 = readCSV('ECG_dummy_data_3_avgHR.mat')
+	list3 = readCSV('ECG_dummy_data_3_avgHR.csv')
 	times3 = list3[0]
 	voltages3 = list3[1]
 
