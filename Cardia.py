@@ -1,4 +1,4 @@
-def DetectCardia(instHR, time):
+def DetectCardia(instHR):
     diagnosis = []
     time = ([],[],[])
     for x in instHR:
