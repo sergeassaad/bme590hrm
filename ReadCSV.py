@@ -19,4 +19,4 @@ def readCSV(filename):
 			voltages.append(float(row[1]))
 		row_count += 1
 
-	return [times, voltages]
+	return [times,voltages]
