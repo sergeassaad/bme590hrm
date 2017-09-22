@@ -22,6 +22,8 @@ def test_avgHR():
 	voltages3 = list3[1]
 
 
-	assert avgHR(times1, voltages1) == HRlist[0]
-	assert avgHR(times2, voltages2) == HRlist[1]
-	assert avgHR(times3, voltages3) == HRlist[2]
+	assert abs(avgHR(times1, voltages1)- HRlist[0])<5
+	assert abs(avgHR(times2, voltages2)- HRlist[1])<5
+	assert abs(avgHR(times3, voltages3)- HRlist[2])<5
+	# assert avgHR(times2, voltages2) == HRlist[1]
+	# assert avgHR(times3, voltages3) == HRlist[2]
