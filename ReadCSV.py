@@ -9,7 +9,7 @@ import csv
 def readCSV(filename):
 	times = []
 	voltages = []
-	file = open(filename, "rb")
+	file = open(filename, "r")
 	reader = csv.reader(file)
 	row_count = 0;
 
