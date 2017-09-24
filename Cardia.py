@@ -1,4 +1,4 @@
-def detect_cardia(inst_hr, times, time_ranges, diagnosis_time_threshold):
+def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_threshold=1):
 
     diagnosis = []
     for x in inst_hr:
@@ -53,13 +53,11 @@ def detect_cardia(inst_hr, times, time_ranges, diagnosis_time_threshold):
             elif b_times[i + 1][0] - b_times[i][1] > timestep:
                 i = i+1
 
-    if time_ranges == 'timeRanges':
+    if display_time_ranges:
         time_range = "Time ranges: Patient had a normal heart rate between {}, " \
                     "had tachycardia between {} and had bradycardia between {}".format(n_times, t_times, b_times)
-    elif time_ranges == 'noTimeRanges':
-        time_range = ''
     else:
-        time_range = "Time ranges: Error: Please input either 'timeRanges' or 'noTimeRanges'"
+        time_range = ''
 
     i = 0
     for x in t_times:
