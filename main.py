@@ -1,7 +1,6 @@
 """main
 Authors: Joseph Cobb, Hala El-Nahal, Serge Assad
-Function:
-
+Function: Read input ECG data and output heart rate and tachycardia/ bradycardia detection
 """
 
 from ReadCSV import readcsv
