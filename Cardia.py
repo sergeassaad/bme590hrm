@@ -79,14 +79,6 @@ def detect_cardia(inst_hr, times, time_ranges, diagnosis_time_threshold):
 
     return [time_range, diagnosis]
 
-def test():
-    detect_cardia([110,90, 50, 110, 70, 70,70,40,40,110], [(0.0005,0.00055),(0, 0.00005), (0.0002, 0.00025),
-                                                          (0.0006, 0.00065),(0.00005,0.0001),(0.0001,0.00015),(0.00015,0.0002),
-                                                          (0.00025,0.0003),(0.0003,0.00035),(0.0018,0.00185)],'timeRanges',0.0001)
 
-
-
-if __name__ == "__main__":
-    test()
 
 
