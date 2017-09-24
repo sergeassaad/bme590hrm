@@ -69,9 +69,9 @@ def DetectCardia(instHR, times, timeRanges, diagnosisTimeThreshold):
     i = 0
     for x in bTimes1:
         if bTimes1[i][1]-bTimes1[i][0] >= diagnosisTimeThreshold:
-            diagnosis2 = 'Bradycardia detected'
+            diagnosis2='Bradycardia detected'
         else:
-            diagnosis2 = 'No bradycardia detected'
+            diagnosis2='No bradycardia detected'
 
     diagnosis = "Diagnosis: {}, {}" .format(diagnosis1, diagnosis2)
 
