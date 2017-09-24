@@ -3,10 +3,11 @@ Authors: Joseph Cobb, Hala El-Nahal, Serge Assad
 Function: Read input ECG data and output heart rate and tachycardia/ bradycardia detection
 """
 
-from ReadCSV import readcsv
-from InstHR import ihr
 from AvgHR import avghr
 from Cardia import detect_cardia
+from ReadCSV import readcsv
+
+from InstHR.InstHR import ihr
 
 
 def main():
