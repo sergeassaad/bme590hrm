@@ -11,7 +11,6 @@ where the (start,end) indicates the time the heartbeat occurred.
 Assume 1000 samples/sec
 """
 
-import csv
 
 def ihr(t, v):
 
@@ -24,11 +23,11 @@ def ihr(t, v):
 
     times = []
     voltages = []
-    heartrates = []
-    maxV = float(max(v))
-    minV = float(min(v))
+    heart_rates = []
+    max_v = float(max(v))
+    min_v = float(min(v))
     threshold_constant = float(0.75)
-    threshold = threshold_constant*(maxV - minV) + minV
+    threshold = threshold_constant*(max_v - min_v) + min_v
 
     for i in range(len(v)):
         if v[i] >= threshold and v[i] >= v[i-1] and v[i] > v[i+1]:
@@ -42,6 +41,6 @@ def ihr(t, v):
         time_pairs.append((times[i], times[i+1]))
 
     for i in range(len(time_pairs)):
-        heartrates.append(round(60/float(time_pairs[i][1] - time_pairs[i][0])))
+        heart_rates.append(round(60/float(time_pairs[i][1] - time_pairs[i][0])))
 
-    return time_pairs, heartrates
+    return time_pairs, heart_rates
