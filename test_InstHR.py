@@ -4,7 +4,7 @@ Unit test for InstHR - a function that will calculate the instantaneous heart ra
 
 import csv
 
-from InstHR.InstHR import ihr
+from InstHR import ihr
 
 f = open('dummyEKGdata.csv', 'rU')
 pointer = csv.reader(f)
