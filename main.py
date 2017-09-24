@@ -4,26 +4,27 @@ Function:
 
 """
 
-from READCSV import readCSV
+from ReadCSV import readcsv
 from InstHR import ihr
-from avgHR import
-from
+from AvgHR import avghr
 
 def main():
+    time_bound1 = 0
+    time_bound2 = 10
+    combo(time_bound1, time_bound2)
 
-    combo()
 
 
+def combo(time_bound1, time_bound2):
 
-def combo():
 
-    data = readCSV(ecg_data.csv)
+    data = readcsv(ecg_data.csv)
     times = data[0]
     voltages = data[1]
     data_2 = ihr(times, voltages)
     time_pairs = data_2[0]
     heart_rates = data_2[1]
-    
+    avghr_value = avghr(times,voltages,time_bound1, time_bound2)
     data_3 = detectcardia(time_pairs, heart_rates)
 
 
