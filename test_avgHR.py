@@ -25,5 +25,13 @@ def test_avgHR():
 	assert abs(avgHR(times1, voltages1)- HRlist[0])<5
 	assert abs(avgHR(times2, voltages2)- HRlist[1])<5
 	assert abs(avgHR(times3, voltages3)- HRlist[2])<5
+
+	assert abs(avgHR(times1, voltages1,   times1[0]+0.5*(times1[len(times1)-1]-times1[0]),  times1[len(times1)-1])- HRlist[0])<5
+	assert abs(avgHR(times2, voltages2,   times2[0]+0.5*(times1[len(times2)-1]-times2[0]),  times2[len(times2)-1])- HRlist[1])<5
+	assert abs(avgHR(times3, voltages3,   times3[0]+0.5*(times3[len(times3)-1]-times3[0]),  times3[len(times3)-1])- HRlist[2])<5
+	# assert abs(avgHR(times2, voltages2)- HRlist[1])<5
+	# assert abs(avgHR(times3, voltages3)- HRlist[2])<5
+
+
 	# assert avgHR(times2, voltages2) == HRlist[1]
 	# assert avgHR(times3, voltages3) == HRlist[2]
