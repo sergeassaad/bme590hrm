@@ -2,12 +2,9 @@
 tests the readCSV for 2 dummy csv files"
 """
 
-import sys
-import os
-import csv
-import pytest
-from ReadCSV import readCSV
+from ReadCSV import readcsv
 
-def test_ReadCSV():
-	assert readCSV('ECG_dummy_data_1.csv') == [[1,2,3], [0.1, 0.4, 0.6]]
-	assert readCSV('ECG_dummy_data_2.csv') == [[0.1,0.2,0.3], [0.3, 0.3, 60]]
+
+def test_readcsv():
+    assert readcsv('ECG_dummy_data_1.csv') == [[1, 2, 3], [0.1, 0.4, 0.6]]
+    assert readcsv('ECG_dummy_data_2.csv') == [[0.1, 0.2, 0.3], [0.3, 0.3, 60]]
