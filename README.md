@@ -3,6 +3,10 @@ avghr function:
 -	Input: Lists of times, list of voltages, lower time bound, upper time bound
 -	Output: 1 value for average heart rate for the specified time range
 
+ihr function:
+-	Located in InstHR.py
+-	Input: List of times and corresponding list of voltages
+-	Output: List of tuples with the start-end time of each heartbeat, and a list of corresponding heartrate calculations for each heartbeat
 
 ![alt text](https://travis-ci.org/sergeassaad/bme590hrm.svg?branch=master)
 
