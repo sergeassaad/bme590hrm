@@ -1,3 +1,7 @@
+readcsv function:
+- Input: csv file
+- Output: time vector, voltages vector
+
 avghr function:
 
 -	Input: Lists of times, list of voltages, lower time bound, upper time bound
