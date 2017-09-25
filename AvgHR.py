@@ -1,3 +1,11 @@
+"""
+AvgHR.py
+========
+avghr:
+
+-	Input: Lists of times, list of voltages, lower time bound, upper time bound
+-	Output: 1 value for average heart rate for the specified time range
+"""
 
 def avghr_unbound(times, voltages):
     dt = times[1] - times[0]  # assume constant sampling rate

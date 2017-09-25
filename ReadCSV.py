@@ -1,6 +1,13 @@
-"""ReadCSV.py
-readCSV(filename) takes in a CSV file and outputs a list of 2 lists: 1st list = time, 2nd list = voltages
 """
+ReadCSV.py
+========
+readcsv:
+
+- Input: csv file
+- Output: time vector, voltages vector
+"""
+
+
 import csv
 
 
