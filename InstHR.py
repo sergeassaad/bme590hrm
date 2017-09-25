@@ -29,7 +29,7 @@ def ihr(t, v):
     threshold_constant = float(0.75)
     threshold = threshold_constant*(max_v - min_v) + min_v
 
-    for i in range(len(v)):
+    for i in range(len(v)-1):
         if v[i] >= threshold and v[i] >= v[i-1] and v[i] > v[i+1]:
             if round(t[i], 3) not in times:
                 times.append(round(t[i], 3))

@@ -77,23 +77,33 @@ def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_thres
 
     if display_time_ranges:
         time_range = "Time ranges: Patient had a normal heart rate between {}, " \
-                    "had tachycardia between {} and had bradycardia between {}".format(n_times, t_times, b_times)
+                    "had tachycardia between {}, and had bradycardia between {}".format(n_times, t_times, b_times)
     else:
         time_range = ''
 
     i = 0
-    for x in t_times:
-        if t_times[i][1]-t_times[i][0] >= diagnosis_time_threshold:
-            diagnosis1 = 'Tachycardia detected'
-        else:
-            diagnosis1 = 'No Tachycardia detected'
+    if t_times != []:
+        for x in t_times:
+            if t_times[i][1]-t_times[i][0] >= diagnosis_time_threshold:
+                diagnosis1 = 'Tachycardia detected'
+                break
+            else:
+                diagnosis1 = 'No Tachycardia detected'
+            i += 1
+    else:
+        diagnosis1 = 'No Tachycardia detected'
 
     i = 0
-    for x in b_times:
-        if b_times[i][1]-b_times[i][0] >= diagnosis_time_threshold:
-            diagnosis2 = 'Bradycardia detected'
-        else:
-            diagnosis2 = 'No Bradycardia detected'
+    if b_times != []:
+        for x in b_times:
+            if b_times[i][1]-b_times[i][0] >= diagnosis_time_threshold:
+                diagnosis2 = 'Bradycardia detected'
+                break
+            else:
+                diagnosis2 = 'No Bradycardia detected'
+            i += 1
+    else:
+        diagnosis2 = 'No Bradycardia detected'
 
     diagnosis = "Diagnosis: {}, {}" .format(diagnosis1, diagnosis2)
 

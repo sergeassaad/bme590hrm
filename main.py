@@ -6,8 +6,7 @@ Function: Read input ECG data and output heart rate and tachycardia/ bradycardia
 from AvgHR import avghr
 from Cardia import detect_cardia
 from ReadCSV import readcsv
-
-from InstHR.InstHR import ihr
+from InstHR import ihr
 
 
 def main():
@@ -21,7 +20,7 @@ def main():
 
 def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshold):
 
-    data = readcsv(ecg_data.csv)
+    data = readcsv('ECG_dummy_data_3_avgHR.csv')
     times = data[0]
     voltages = data[1]
 
@@ -31,7 +30,7 @@ def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshol
 
     avg_hr_value = avghr(times, voltages, time_bound1, time_bound2)
 
-    data_3 = detect_cardia(time_pairs, heart_rates, display_time_ranges, diagnosis_time_threshold)
+    data_3 = detect_cardia(heart_rates, time_pairs, display_time_ranges, diagnosis_time_threshold)
     time_ranges = data_3[0]
     diagnosis = data_3[1]
 
@@ -41,12 +40,13 @@ def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshol
     if display_time_ranges:
         f.write('%s' % time_ranges)
 
-    f.write('The average heart rate was %d between %d and %d.\n' % (avg_hr_value, time_bound1, time_bound2))
+    f.write('The average heart rate was %f between %f and %f.\n' % (avg_hr_value, time_bound1, time_bound2))
 
     f.write('The instantaneous heart rate was calculated for each heartbeat.\n')
 
     for i in range(len(heart_rates)):
-        f.write('The heart rate was %d between %d and %d.\n' %(heart_rates[i], time_pairs[i][0], time_pairs[i][1]))
+        f.write('The heart rate was %d bpm between %f and %f seconds.\n'
+                %(heart_rates[i], time_pairs[i][0], time_pairs[i][1]))
 
     f.close()
 
