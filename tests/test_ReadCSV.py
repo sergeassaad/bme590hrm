@@ -1,8 +1,12 @@
 """test_ReadCSV.py
 tests the readCSV for 2 dummy csv files"
 """
-
+import os
+import sys
+myPath = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, myPath + '/../')
 from ReadCSV import readcsv
+
 
 
 def test_readcsv():

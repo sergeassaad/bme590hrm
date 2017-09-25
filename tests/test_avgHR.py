@@ -1,7 +1,12 @@
-
+import os
+import sys
+myPath = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, myPath + '/../')
 
 from ReadCSV import readcsv
 from AvgHR import avghr
+
+
 
 
 def test_avghr():

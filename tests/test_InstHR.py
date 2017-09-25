@@ -1,10 +1,15 @@
 """test_InstHR.py
 Unit test for InstHR - a function that will calculate the instantaneous heart rate.
 """
+import os
+import sys
+
+myPath = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, myPath + '/../')
 
 import csv
-
 from InstHR import ihr
+
 
 f = open('dummyEKGdata.csv', 'rU')
 pointer = csv.reader(f)
