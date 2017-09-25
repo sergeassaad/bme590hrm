@@ -1,6 +1,5 @@
 
-
-from ReadCSV import readcsv
+import ReadCSV
 from AvgHR import avghr
 
 
@@ -8,15 +7,15 @@ def test_avghr():
 
     hrlist = [48, 96, 144]
 
-    list1 = readcsv('ECG_dummy_data_1_avgHR.csv')
+    list1 = ReadCSV.readcsv('ECG_dummy_data_1_avgHR.csv')
     times1 = list1[0]
     voltages1 = list1[1]
 
-    list2 = readcsv('ECG_dummy_data_2_avgHR.csv')
+    list2 = ReadCSV.readcsv('ECG_dummy_data_2_avgHR.csv')
     times2 = list2[0]
     voltages2 = list2[1]
 
-    list3 = readcsv('ECG_dummy_data_3_avgHR.csv')
+    list3 = ReadCSV.readcsv('ECG_dummy_data_3_avgHR.csv')
     times3 = list3[0]
     voltages3 = list3[1]
 

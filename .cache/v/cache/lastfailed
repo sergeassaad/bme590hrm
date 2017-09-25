@@ -1,1 +1,4 @@
-{}
+{
+  "test_ReadCSV.py::test_readcsv": true, 
+  "testers/test_avgHR.py::test_avghr": true
+}
