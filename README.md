@@ -10,20 +10,23 @@ Heart Rate Monitor which takes in time and voltage data and outputs instantaneou
 Subfunctions
 ============
 readcsv function:
++++++++++++++++++
 - Input: csv file
 - Output: time vector, voltages vector
 
 avghr function:
-
++++++++++++++++
 -	Input: Lists of times, list of voltages, lower time bound, upper time bound
 -	Output: 1 value for average heart rate for the specified time range
 
 ihr function:
++++++++++++++
 -	Located in InstHR.py
 -	Input: List of times and corresponding list of voltages
 -	Output: List of tuples with the start-end time of each heartbeat, and a list of corresponding heartrate calculations for each heartbeat
 
 detect_cardia function:
++++++++++++++++++++++++
 -	User inputs: display_time_ranges and diagnosis_time_threshold
 -	If display_time_ranges is set to True, the program outputs the time ranges during which the patient?s instantaneous heart rate was normal,
     the time ranges during which tachycardia was detected (instantaneous heart rate was above 100 bpm) and the time ranges during which
