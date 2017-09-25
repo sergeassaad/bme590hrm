@@ -3,7 +3,7 @@
 Heart Rate Monitor
 ==================
 
-Heart Rate Monitor which takes in time and voltage data and outputs instantaneous HR, average HR, and diagnoses for bradycardia and tachycardia.
+Heart Rate Monitor which takes in time and voltage data and outputs instantaneous HR, average HR, and diagnoses bradycardia and tachycardia.
 
 
 
