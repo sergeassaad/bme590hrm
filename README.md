@@ -34,7 +34,8 @@ detect_cardia function:
     for the program to indicate that bradycardia or tachycardia was detected, respectively.
 -   Essentially it is a threshold for the detection of bradycardia or tachycardia and is set to a default value of 1 second
 
-
+License
+=======
 
 MIT License
 
