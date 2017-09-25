@@ -1,7 +1,26 @@
 def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_threshold=1):
 
-    """Returns time ranges for normal, tachycardia and bradycardia instantaneous HR and returns overall
-    patient diagnosis (tachycardia, bradychardia or both) based on a threshold inputted by the user"""
+    """detect_cardia
+
+    Module Author: Hala El-Nahal
+
+    Function: Outputs a string listing the time ranges during which the patient's instantaneous heart rate was normal,
+    the time ranges during which there was bradycardia (instantaneous HR below 60bpm) and the time ranges during which
+    there was tachycardia (instantaneous HR above 100bpm). Also outputs an overall diagnosis of tachycardia or
+    bradycardia based on a threshold set by the user
+
+    Four input arguments:
+        -arg 1: an instantaneous HR array
+        -arg 2: an array of time ranges that correspond to the instantaneous HRs in arg1
+        -arg 3: (user input) A boolean that displays time ranges described above when set to true and does not display
+                the time ranges when set to false. Default set to true.
+        -arg 4: (user input) the amount of time in seconds that the instantaneous HR must remain under 60bpm or over
+                100bpm for program to indicate that bradycardia or tachycardia, respectively, (or both) was detected.
+                In other words, a time threshold for bradycardia and tachycardia detection. Default set to 1 second.
+
+    Two outputs:
+        -Time ranges for normal, bradycardia and tachycardia instantaneous HRs
+        -Overall diagnosis (for example: 'tachycardia detected') based on the threshold set by the user"""
 
     diagnosis = []
     for x in inst_hr:

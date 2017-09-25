@@ -10,6 +10,7 @@ Heart Rate Monitor which takes in time and voltage data and outputs instantaneou
 Subfunctions
 ============
 readcsv function:
+
 - Input: csv file
 - Output: time vector, voltages vector
 
@@ -19,18 +20,20 @@ avghr function:
 -	Output: 1 value for average heart rate for the specified time range
 
 ihr function:
+
 -	Located in InstHR.py
 -	Input: List of times and corresponding list of voltages
 -	Output: List of tuples with the start-end time of each heartbeat, and a list of corresponding heartrate calculations for each heartbeat
 
 detect_cardia function:
+
 -	User inputs: display_time_ranges and diagnosis_time_threshold
 -	If display_time_ranges is set to True, the program outputs the time ranges during which the patient?s instantaneous heart rate was normal,
     the time ranges during which tachycardia was detected (instantaneous heart rate was above 100 bpm) and the time ranges during which
     bradycardia was detected (instantaneous heart rate was below 60 bpm)
 -   If the user does not want to view these times ranges, he/she has the option of turning this off by setting display_time_ranges to False.
     It is set to True by default
--   diagnosis_time_threshold asks the user to input the amount of time that the instantaneous heart rate must remain below 60bpm or above 100bpm
+-   diagnosis_time_threshold asks the user to input the amount of time in seconds that the instantaneous heart rate must remain below 60bpm or above 100bpm
     for the program to indicate that bradycardia or tachycardia was detected, respectively.
 -   Essentially it is a threshold for the detection of bradycardia or tachycardia and is set to a default value of 1 second
 
