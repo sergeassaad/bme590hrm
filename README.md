@@ -10,12 +10,12 @@ Heart Rate Monitor which takes in time and voltage data and outputs instantaneou
 Subfunctions
 ============
 readcsv function:
-+++++++++++++++++
+
 - Input: csv file
 - Output: time vector, voltages vector
 
-avghr function:
-+++++++++++++++
+avghr function
+++++++++++++++
 -	Input: Lists of times, list of voltages, lower time bound, upper time bound
 -	Output: 1 value for average heart rate for the specified time range
 
