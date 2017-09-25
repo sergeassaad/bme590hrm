@@ -1,5 +1,8 @@
 def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_threshold=1):
 
+    """Returns time ranges for normal, tachycardia and bradycardia instantaneous HR and returns overall
+    patient diagnosis (tachycardia, bradychardia or both) based on a threshold inputted by the user"""
+
     diagnosis = []
     for x in inst_hr:
         if x < 60:
