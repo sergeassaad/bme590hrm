@@ -20,7 +20,7 @@ def main():
 
 def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshold):
 
-    data = readcsv('ECG_dummy_data_3_avgHR.csv')
+    data = readcsv('ecg_data.csv')
     times = data[0]
     voltages = data[1]
 
