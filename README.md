@@ -1,4 +1,8 @@
-This is our README!
+avghr function:
+
+-	Input: Lists of times, list of voltages, lower time bound, upper time bound
+-	Output: 1 value for average heart rate for the specified time range
+
 
 ![alt text](https://travis-ci.org/sergeassaad/bme590hrm.svg?branch=master)
 
