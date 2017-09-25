@@ -1,3 +1,18 @@
+![alt text](https://travis-ci.org/sergeassaad/bme590hrm.svg?branch=master)
+
+Heart Rate Monitor
+==================
+
+Heart Rate Monitor which takes in time and voltage data and outputs instantaneous HR, average HR, and diagnoses bradycardia and tachycardia.
+
+
+
+Subfunctions
+============
+readcsv function:
+- Input: csv file
+- Output: time vector, voltages vector
+
 avghr function:
 
 -	Input: Lists of times, list of voltages, lower time bound, upper time bound
@@ -19,7 +34,8 @@ detect_cardia function:
     for the program to indicate that bradycardia or tachycardia was detected, respectively.
 -   Essentially it is a threshold for the detection of bradycardia or tachycardia and is set to a default value of 1 second
 
-![alt text](https://travis-ci.org/sergeassaad/bme590hrm.svg?branch=master)
+License
+=======
 
 MIT License
 
@@ -42,3 +58,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Contributors
+============
+- Serge Assaad (serge.assaad@duke.edu)
+- Joseph Cobb (joseph.cobb@duke.edu)
+- Hala El-Nahal (hala.el.nahal@duke.edu)
