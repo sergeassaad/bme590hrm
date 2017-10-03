@@ -10,7 +10,11 @@ Welcome to Heart Rate Monitor's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   install
+   ReadCSV
+   InstHR
+   AvgHR
+   Cardia
 
 Indices and tables
 ==================
