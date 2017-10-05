@@ -1,5 +1,6 @@
 .idea/*
-*/__pycache__/*
+__pycache__/*
 *.pyc
 .cache/*
 docs/_build/*
+tests/__pychache__/*
