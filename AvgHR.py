@@ -9,7 +9,6 @@ avghr:
 
 
 def avghr_unbound(times, voltages):
-
     dt = times[1] - times[0]  # assume constant sampling rate
     threshold_constant = 0.7
     threshold = threshold_constant * (max(voltages) - min(voltages)) + min(voltages)
