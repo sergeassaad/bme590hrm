@@ -3,3 +3,4 @@ __pycache__/*
 *.pyc
 .cache/*
 docs/_build/*
+tests/__pychache__/*
