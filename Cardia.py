@@ -2,7 +2,7 @@ from time_ranges import time_ranges
 from diagnosis import diagnosis
 
 
-def detect_cardia(inst_hr, times, brady_bound, tachy_bound, display_time_ranges=True, diagnosis_time_threshold=1):
+def detect_cardia(inst_hr, times, brady_bound=60, tachy_bound=100, display_time_ranges=True, diagnosis_time_threshold=1):
 
     """detect_cardia
 

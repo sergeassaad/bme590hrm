@@ -15,10 +15,12 @@ def main():
     time_bound2 = float('INF')
     display_time_ranges = True
     diagnosis_time_threshold = 1
-    combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshold)
+    brady_bound=60
+    tachy_bound=100
+    combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshold,brady_bound, tachy_bound)
 
 
-def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshold):
+def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshold, brady_bound, tachy_bound):
 
     data = readcsv('ecg_data.csv')
     times = data[0]
@@ -30,7 +32,8 @@ def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshol
 
     avg_hr_value = avghr(times, voltages, time_bound1, time_bound2)
 
-    data_3 = detect_cardia(heart_rates, time_pairs, display_time_ranges, diagnosis_time_threshold)
+    data_3 = detect_cardia(heart_rates, time_pairs, brady_bound, tachy_bound, display_time_ranges,
+                           diagnosis_time_threshold)
     time_ranges = data_3[0]
     diagnosis = data_3[1]
 
