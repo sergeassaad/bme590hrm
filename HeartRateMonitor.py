@@ -10,7 +10,7 @@ class HRM:
         self.voltages = voltages
 
     def avghr(self, t1=-1, t2=-1):
-        from AvgHR import *
+        from AvgHR import avghr
         if t1 == -1 or t2== -1:
             t1 = self.times[0]
             t2 = self.times[len(self.times)-1]
