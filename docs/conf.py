@@ -167,6 +167,3 @@ texinfo_documents = [
      author, 'HeartRateMonitor', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
