@@ -26,6 +26,8 @@ def avghr_unbound(times, voltages):
 
 
 def avghr(times, voltages, t1=0, t2=float('inf')):
+    if times == [] or voltages == []:
+        return -1
     if t1 < times[0]:
         t1 = times[0]
     if t2 > times[len(times) - 1]:
