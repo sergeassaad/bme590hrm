@@ -5,7 +5,7 @@ sys.path.insert(0, myPath + '/../')
 
 from ReadCSV import readcsv
 from AvgHR import avghr
-from HeartRateMonitor import *
+from HeartRateMonitor import HRM
 
 
 
