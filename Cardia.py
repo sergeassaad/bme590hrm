@@ -1,12 +1,12 @@
-def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_threshold=1):
+def detect_cardia(inst_hr, times, brady_bound, tachy_bound, display_time_ranges=True, diagnosis_time_threshold=1):
 
     diagnosis = []
     for x in inst_hr:
-        if x < 60:
+        if x < brady_bound:
             diagnosis.append("Bradycardia")
-        elif x > 100:
+        elif x > tachy_bound:
             diagnosis.append("Tachycardia")
-        elif x >= 60 & x <= 100:
+        elif x >= brady_bound & x <= tachy_bound:
             diagnosis.append("Normal")
 
     index_n = [i for i, x in enumerate(diagnosis) if x == "Normal"]
