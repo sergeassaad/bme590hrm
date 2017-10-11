@@ -1,4 +1,5 @@
 from time_ranges import time_ranges
+from diagnosis import diagnosis
 
 
 def detect_cardia(inst_hr, times, brady_bound, tachy_bound, display_time_ranges=True, diagnosis_time_threshold=1):
@@ -24,7 +25,9 @@ def detect_cardia(inst_hr, times, brady_bound, tachy_bound, display_time_ranges=
     Two outputs:
         -Time ranges for normal, bradycardia and tachycardia instantaneous HRs
         -Overall diagnosis (for example: 'tachycardia detected') based on the threshold set by the user"""
+    # ----------------------------------------------------------------------------------------------------------------
 
+    # time ranges for normal, tachycardia and bradycardia instant HR
     diag = []
     for x in inst_hr:
         if x < brady_bound:
@@ -44,33 +47,10 @@ def detect_cardia(inst_hr, times, brady_bound, tachy_bound, display_time_ranges=
     else:
         time_range = ''
 
-    i = 0
-    if t_times != []:
-        for x in t_times:
-            if t_times[i][1]-t_times[i][0] >= diagnosis_time_threshold:
-                diagnosis1 = 'Tachycardia detected'
-                break
-            else:
-                diagnosis1 = 'No Tachycardia detected'
-            i += 1
-    else:
-        diagnosis1 = 'No Tachycardia detected'
+    # overall diagnosis based on diagnosis threshold set by user
+    final_diagnosis = diagnosis(b_times, t_times, diagnosis_time_threshold)
 
-    i = 0
-    if b_times != []:
-        for x in b_times:
-            if b_times[i][1]-b_times[i][0] >= diagnosis_time_threshold:
-                diagnosis2 = 'Bradycardia detected'
-                break
-            else:
-                diagnosis2 = 'No Bradycardia detected'
-            i += 1
-    else:
-        diagnosis2 = 'No Bradycardia detected'
-
-    diagnosis = "Diagnosis: {}, {}" .format(diagnosis1, diagnosis2)
-
-    return [time_range, diagnosis]
+    return [time_range, final_diagnosis]
 
 
 
