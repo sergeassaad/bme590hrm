@@ -28,7 +28,7 @@ def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_thres
             diagnosis.append("Bradycardia")
         elif x > 100:
             diagnosis.append("Tachycardia")
-        elif x >= 60 & x <= 100:
+        elif x >= 60 and x <= 100:
             diagnosis.append("Normal")
 
     index_n = [i for i, x in enumerate(diagnosis) if x == "Normal"]
