@@ -15,3 +15,7 @@ class HRM:
             t1 = self.times[0]
             t2 = self.times[len(self.times)-1]
         return avghr(self.times, self.voltages, t1, t2)
+
+    def ihr(self):
+        from InstHR import ihr
+        return ihr(self.times, self.voltages)

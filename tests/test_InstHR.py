@@ -9,6 +9,7 @@ import csv
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../')
 from InstHR import ihr
+from HeartRateMonitor import HRM
 
 
 f = open('dummyEKGdata.csv', 'rU')
@@ -19,6 +20,8 @@ v = []
 for i in range(1, len(exampleData)):
     t.append(float(exampleData[i][0]))
     v.append(float(exampleData[i][1]))
+
+obj = HRM(t, v)
 
 
 def test_inputs():
@@ -34,3 +37,11 @@ def test_hr_calc():
                             (1.267, 1.673), (1.673, 2.017),
                             (2.017, 2.423), (2.423, 2.767)]
     assert ihr(t, v)[1] == [174.0, 148.0, 174.0, 148.0, 174.0, 148.0, 174.0]
+
+
+def test_class():
+
+    assert obj.ihr()[0] == [(0.173, 0.517), (0.517, 0.923), (0.923, 1.267),
+                            (1.267, 1.673), (1.673, 2.017),
+                            (2.017, 2.423), (2.423, 2.767)]
+    assert obj.ihr()[1] == [174.0, 148.0, 174.0, 148.0, 174.0, 148.0, 174.0]
