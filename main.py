@@ -22,7 +22,7 @@ def main():
 
 def combo(time_bound1, time_bound2, display_time_ranges, diagnosis_time_threshold, brady_bound, tachy_bound):
 
-    data = readcsv('ecg_data.csv')
+    data = readcsv('dummyEKGdata')
     times = data[0]
     voltages = data[1]
 
