@@ -12,12 +12,9 @@ from InstHR import ihr
 
 def main():
 
-    time_bound1 = 0
-    time_bound2 = float('INF')
-    display_time_ranges = True
-    diagnosis_time_threshold = 1
-    combo(time_bound1, time_bound2, display_time_ranges,
-          diagnosis_time_threshold)
+    kwargs = {'time_bound1': 0, 'time_bound2': float('INF'),
+              'display_time_ranges': True, 'diagnosis_time_threshold': 1}
+    combo(**kwargs)
 
 
 def combo(time_bound1, time_bound2, display_time_ranges,
