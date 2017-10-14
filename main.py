@@ -12,18 +12,16 @@ from InstHR import ihr
 
 def main():
 
-    time_bound1 = 0
-    time_bound2 = float('INF')
-    display_time_ranges = True
-    diagnosis_time_threshold = 1
-    combo(time_bound1, time_bound2, display_time_ranges,
-          diagnosis_time_threshold)
+    kwargs = {'time_bound1': 0, 'time_bound2': float('INF'),
+              'display_time_ranges': True, 'diagnosis_time_threshold': 1}
+    combo(**kwargs)
 
 
 def combo(time_bound1, time_bound2, display_time_ranges,
-          diagnosis_time_threshold):
+          diagnosis_time_threshold, input_filename='test_data/test_data1.csv',
+          output_filename='output.txt'):
 
-    data = readcsv('ecg_data.csv')
+    data = readcsv(input_filename)
     times = data[0]
     voltages = data[1]
 
@@ -38,7 +36,7 @@ def combo(time_bound1, time_bound2, display_time_ranges,
     time_ranges = data_3[0]
     diagnosis = data_3[1]
 
-    with open('output.txt', 'w') as f:
+    with open(output_filename, 'w') as f:
         f.write('%s \n' % diagnosis)
 
         if display_time_ranges:

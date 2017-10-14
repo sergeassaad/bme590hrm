@@ -9,6 +9,7 @@ avghr:
 
 
 def avghr_unbound(times, voltages):
+    SECONDS_PER_MIN = 60.0
     dt = times[1] - times[0]  # assume constant sampling rate
     threshold_constant = 0.7
     voltage_range = max(voltages) - min(voltages)
@@ -22,7 +23,7 @@ def avghr_unbound(times, voltages):
             peak_count += 1
             peak_times.append(times[i])
 
-    return 60.0 * peak_count / (peak_times[-1] - peak_times[0])
+    return SECONDS_PER_MIN * peak_count / (peak_times[-1] - peak_times[0])
 
 
 def avghr(times, voltages, t1=0, t2=float('inf')):

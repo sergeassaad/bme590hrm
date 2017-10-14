@@ -29,6 +29,10 @@ def test_avghr():
     HRM2 = HRM(times2, voltages2)
     HRM3 = HRM(times3, voltages3)
 
+    HRM1.avghr()
+    HRM2.avghr()
+    HRM3.avghr()
+
 
     assert abs(avghr(times1, voltages1) - hrlist[0])<5
     assert abs(avghr(times2, voltages2) - hrlist[1])<5
@@ -41,15 +45,28 @@ def test_avghr():
     assert abs(avghr(times2, voltages2,   lower_bound2,  times2[len(times2)-1]) - hrlist[1]) < 5
     assert abs(avghr(times3, voltages3,   lower_bound3,  times3[len(times3)-1]) - hrlist[2]) < 5
 
-    assert abs(HRM1.avghr() - hrlist[0]) < 5
-    assert abs(HRM2.avghr() - hrlist[1]) < 5
-    assert abs(HRM3.avghr() - hrlist[2]) < 5
+    assert abs(HRM1.averagehr - hrlist[0]) < 5
+    assert abs(HRM2.averagehr - hrlist[1]) < 5
+    assert abs(HRM3.averagehr - hrlist[2]) < 5
 
     lower_bound1 = times1[0] + 0.5 * (times1[len(times1) - 1] - times1[0])
     lower_bound2 = times2[0] + 0.5 * (times2[len(times2) - 1] - times2[0])
     lower_bound3 = times3[0] + 0.5 * (times3[len(times3) - 1] - times3[0])
-    assert abs(HRM1.avghr(lower_bound1, times1[len(times1) - 1]) - hrlist[0]) < 5
-    assert abs(HRM2.avghr(lower_bound2, times1[len(times2) - 1]) - hrlist[1]) < 5
-    assert abs(HRM3.avghr(lower_bound3, times1[len(times3) - 1]) - hrlist[2]) < 5
+
+    HRM1.t1 = lower_bound1
+    HRM2.t1 = lower_bound2
+    HRM3.t1 = lower_bound3
+
+    HRM1.t2 = times1[len(times1)-1]
+    HRM2.t2 = times2[len(times2)-1]
+    HRM3.t2 = times3[len(times3)-1]
+
+    HRM1.avghr()
+    HRM2.avghr()
+    HRM3.avghr()
+
+    assert abs(HRM1.averagehr - hrlist[0]) < 5
+    assert abs(HRM2.averagehr - hrlist[1]) < 5
+    assert abs(HRM3.averagehr - hrlist[2]) < 5
 
 
