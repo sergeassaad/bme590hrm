@@ -1,6 +1,7 @@
 class HRM:
 
-    def __init__(self, times=[], voltages=[], time_units='s', t1 = -1, t2 = -1):
+    def __init__(self, times=[], voltages=[], time_units='s', t1=-1, t2=-1, display_time_ranges=True,
+                 diagnosis_time_threshold=1):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
@@ -11,6 +12,8 @@ class HRM:
             t2 = self.times[len(self.times)-1]
         self.t1 = t1
         self.t2 = t2
+        self.display_time_ranges = display_time_ranges
+        self.diagnosis_time_threshold = diagnosis_time_threshold
 
     def avghr(self):
         from AvgHR import avghr
@@ -20,6 +23,6 @@ class HRM:
         from InstHR import ihr
         return ihr(self.times, self.voltages)
 
-    def detect_Cardia(self, inst_hr, times, display_time_ranges=True, diagnosis_time_threshold=1):
+    def detect_Cardia(self):
         from Cardia import detect_cardia
-        return detect_cardia(inst_hr, times, display_time_ranges, diagnosis_time_threshold)
+        self.DetectCardia = detect_cardia(inst_hr, times, self.display_time_ranges, self.diagnosis_time_threshold)
