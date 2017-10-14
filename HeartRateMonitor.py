@@ -19,8 +19,32 @@ class HRM:
         self.averagehr = avghr(self.times, self.voltages, self.t1, self.t2)
 
     def ihr(self):
-        from InstHR import ihr
-        self.ihr_times, self.instant_hr = ihr(self.times, self.voltages)
+        times = []
+        voltages = []
+        heart_rates = []
+        max_v = float(max(self.voltages))
+        min_v = float(min(self.voltages))
+        threshold_constant = float(0.75)
+        threshold = threshold_constant * (max_v - min_v) + min_v
+
+        for i in range(len(self.voltages) - 1):
+            if (self.voltages[i] >= threshold and
+                    self.voltages[i] >= self.voltages[i - 1] and
+                    self.voltages[i] > self.voltages[i + 1]):
+                if round(self.times[i], 3) not in times:
+                    times.append(round(self.times[i], 3))
+                    voltages.append(self.voltages[i])
+
+        time_pairs = []
+
+        for i in range(len(times) - 1):
+            time_pairs.append((times[i], times[i + 1]))
+
+        for i in range(len(time_pairs)):
+            heart_rates.append(round(60 /
+                                     float(
+                                         time_pairs[i][1] - time_pairs[i][0])))
+        self.ihr_times, self.instant_hr = time_pairs, heart_rates
 
     def detect_Cardia(self, inst_hr, times, display_time_ranges=True, diagnosis_time_threshold=1):
         from Cardia import detect_cardia
