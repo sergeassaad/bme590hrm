@@ -1,13 +1,13 @@
 class HRM:
 
-    def __init__(self, times=[], voltages=[], time_units='s', t1 = -1, t2 = -1):
+    def __init__(self, times=[], voltages=[], time_units='s', t1 = None, t2 = None):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
         self.averagehr = -1
-        if t1 == -1:
+        if t1 is None:
             t1 = self.times[0]
-        if t2 == -1:
+        if t2 is None:
             t2 = self.times[len(self.times)-1]
         self.t1 = t1
         self.t2 = t2
