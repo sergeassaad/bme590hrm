@@ -1,11 +1,19 @@
 class HRM:
+    """
+    HeartRateMonitor.py
+    ========
+    Methods:
 
+    -	avghr (calculates average HR)
+    -	ihr (calculates instantaneous HR)
+    -   detect_cardia (finds brady- and tachycardia occurrences)
+    """
     def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None, display_time_ranges=True,
                  diagnosis_time_threshold=1):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
-        self.averagehr = None
+        self.average_hr = None
         if t1 is None:
             t1 = self.times[0]
         if t2 is None:
@@ -19,9 +27,17 @@ class HRM:
         self.DetectCardia = []
 
     def avghr(self):
+        """
+        AvgHR.py
+        ========
+        avghr:
+
+        -	Input: Lists of times, list of voltages, lower time bound, upper time bound
+        -	Output: 1 value for average heart rate for the specified time range
+        """
         from AvgHR import avghr
         self.averagehr = avghr(self.times, self.voltages, self.t1, self.t2)
-        return self.averagehr
+        return self.average_hr
 
     def ihr(self):
         times = []
