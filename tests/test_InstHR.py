@@ -15,6 +15,7 @@ from HeartRateMonitor import HRM
 f = open('dummyEKGdata.csv', 'rU')
 pointer = csv.reader(f)
 exampleData = list(pointer)
+f.close()
 t = []
 v = []
 for i in range(1, len(exampleData)):
@@ -22,6 +23,7 @@ for i in range(1, len(exampleData)):
     v.append(float(exampleData[i][1]))
 
 obj = HRM(t, v)
+obj.ihr()
 
 
 def test_inputs():
@@ -41,7 +43,7 @@ def test_hr_calc():
 
 def test_class():
 
-    assert obj.ihr()[0] == [(0.173, 0.517), (0.517, 0.923), (0.923, 1.267),
-                            (1.267, 1.673), (1.673, 2.017),
-                            (2.017, 2.423), (2.423, 2.767)]
-    assert obj.ihr()[1] == [174.0, 148.0, 174.0, 148.0, 174.0, 148.0, 174.0]
+    assert obj.ihr_times == [(0.173, 0.517), (0.517, 0.923), (0.923, 1.267),
+                             (1.267, 1.673), (1.673, 2.017),
+                             (2.017, 2.423), (2.423, 2.767)]
+    assert obj.instant_hr == [174.0, 148.0, 174.0, 148.0, 174.0, 148.0, 174.0]
