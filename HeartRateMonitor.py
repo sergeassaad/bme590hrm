@@ -16,6 +16,7 @@ class HRM:
         self.ihr_times = []
         self.display_time_ranges = display_time_ranges
         self.diagnosis_time_threshold = diagnosis_time_threshold
+        self.DetectCardia = []
 
     def avghr(self):
         from AvgHR import avghr
@@ -51,6 +52,5 @@ class HRM:
 
     def detect_cardia(self):
         from Cardia import detect_cardia
-        HRM.ihr(self)
         self.DetectCardia = detect_cardia(self.instant_hr, self.ihr_times, self.display_time_ranges,
                                           self.diagnosis_time_threshold)
