@@ -5,7 +5,7 @@ class HRM:
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
-        self.averagehr = -1
+        self.averagehr = None
         if t1 is None:
             t1 = self.times[0]
         if t2 is None:
@@ -21,6 +21,7 @@ class HRM:
     def avghr(self):
         from AvgHR import avghr
         self.averagehr = avghr(self.times, self.voltages, self.t1, self.t2)
+        return self.averagehr
 
     def ihr(self):
         times = []

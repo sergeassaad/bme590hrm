@@ -21,7 +21,8 @@ def test_avghr():
         # assert abs(avghr(times, voltages) - hrlist[i]) < 5
 
         myHRM = HRM(times,voltages)
-        myHRM.avghr()
-        assert(abs(myHRM.averagehr - hrlist[i-1]) < 5)
+        # myHRM.avghr()
+        # assert(abs(myHRM.averagehr - hrlist[i-1]) < 5)
+        assert (abs(myHRM.avghr() - hrlist[i - 1]) < 5)
         lower_bound = times[0] + 0.5 * (times[len(times) - 1] - times[0])
         assert abs(avghr(times, voltages, lower_bound, times[len(times) - 1]) - hrlist[i-1]) < 5
