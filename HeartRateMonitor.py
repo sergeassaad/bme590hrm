@@ -54,3 +54,4 @@ class HRM:
         from Cardia import detect_cardia
         self.DetectCardia = detect_cardia(self.instant_hr, self.ihr_times, self.display_time_ranges,
                                           self.diagnosis_time_threshold)
+        return detect_cardia(inst_hr, times, display_time_ranges, diagnosis_time_threshold)
