@@ -36,7 +36,7 @@ class HRM:
         -	Output: 1 value for average heart rate for the specified time range
         """
         from AvgHR import avghr
-        self.averagehr = avghr(self.times, self.voltages, self.t1, self.t2)
+        self.average_hr = avghr(self.times, self.voltages, self.t1, self.t2)
         return self.average_hr
 
     def ihr(self):
