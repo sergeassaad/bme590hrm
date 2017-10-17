@@ -19,7 +19,8 @@ def ihr(t, v):
 
     for i in range(len(t)):
         if type(t[i]) not in (int, float) or type(v[i]) not in (int, float):
-            return 'Please input a list of times and a list of lead voltages as arguments.'
+            return ('Please input a list of times and'
+                    'a list of lead voltages as arguments.')
 
     times = []
     voltages = []
@@ -41,6 +42,7 @@ def ihr(t, v):
         time_pairs.append((times[i], times[i+1]))
 
     for i in range(len(time_pairs)):
-        heart_rates.append(round(60/float(time_pairs[i][1] - time_pairs[i][0])))
+        heart_rates.append(round(60 /
+                                 float(time_pairs[i][1] - time_pairs[i][0])))
 
     return time_pairs, heart_rates

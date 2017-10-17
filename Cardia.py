@@ -43,6 +43,7 @@ def detect_cardia(inst_hr, times, brady_bound=60, tachy_bound=100, display_time_
     b_times = time_ranges(diag, times, "Bradycardia")
     t_times = time_ranges(diag, times, "Tachycardia")
     
+
     if display_time_ranges:
         time_range = "Time ranges: Patient had a normal heart rate between {}, " \
                     "had tachycardia between {}, and had bradycardia between {}".format(n_times, t_times, b_times)
