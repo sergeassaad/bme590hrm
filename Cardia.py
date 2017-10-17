@@ -1,5 +1,7 @@
+
 from time_ranges import time_ranges
 from diagnosis import diagnosis
+
 
 
 def detect_cardia(inst_hr, times, brady_bound=60, tachy_bound=100, display_time_ranges=True, diagnosis_time_threshold=1):
@@ -36,11 +38,11 @@ def detect_cardia(inst_hr, times, brady_bound=60, tachy_bound=100, display_time_
             diag.append("Tachycardia")
         elif x >= brady_bound & x <= tachy_bound:
             diag.append("Normal")
-
+            
     n_times = time_ranges(diag, times, "Normal")
     b_times = time_ranges(diag, times, "Bradycardia")
     t_times = time_ranges(diag, times, "Tachycardia")
-
+    
     if display_time_ranges:
         time_range = "Time ranges: Patient had a normal heart rate between {}, " \
                     "had tachycardia between {}, and had bradycardia between {}".format(n_times, t_times, b_times)
