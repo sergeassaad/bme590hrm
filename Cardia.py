@@ -1,4 +1,10 @@
-def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_threshold=1):
+
+from time_ranges import time_ranges
+from diagnosis import diagnosis
+
+
+
+def detect_cardia(inst_hr, times, brady_bound=60, tachy_bound=100, display_time_ranges=True, diagnosis_time_threshold=1):
 
     """detect_cardia
 
@@ -21,59 +27,22 @@ def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_thres
     Two outputs:
         -Time ranges for normal, bradycardia and tachycardia instantaneous HRs
         -Overall diagnosis (for example: 'tachycardia detected') based on the threshold set by the user"""
+    # ----------------------------------------------------------------------------------------------------------------
 
-    diagnosis = []
+    # time ranges for normal, tachycardia and bradycardia instant HR
+    diag = []
     for x in inst_hr:
-        if x < 60:
-            diagnosis.append("Bradycardia")
-        elif x > 100:
-            diagnosis.append("Tachycardia")
-        elif x >= 60 and x <= 100:
-            diagnosis.append("Normal")
-
-    index_n = [i for i, x in enumerate(diagnosis) if x == "Normal"]
-    index_t = [i for i, x in enumerate(diagnosis) if x == "Tachycardia"]
-    index_b = [i for i, x in enumerate(diagnosis) if x == "Bradycardia"]
-
-    n_times = []
-    t_times = []
-    b_times = []
-
-    for n in index_n:
-        n_times.append(times[n])
-    for n in index_t:
-        t_times.append(times[n])
-    for n in index_b:
-        b_times.append(times[n])
-
-    timestep = times[0][1]-times[0][0]
-
-    i = 0
-    if len(index_n) > 1:
-        while i < len(n_times)-1:
-            if n_times[i + 1][0] - n_times[i][1] <= timestep:
-                n_times[i+1] = (n_times[i][0],n_times[i+1][1])
-                del n_times[i]
-            elif n_times[i + 1][0] - n_times[i][1] > timestep:
-                i = i+1
-
-    i = 0
-    if len(index_t) > 1:
-        while i < len(t_times) - 1:
-            if t_times[i + 1][0] - t_times[i][1] <= timestep:
-                t_times[i + 1] = (t_times[i][0], t_times[i + 1][1])
-                del t_times[i]
-            elif t_times[i + 1][0] - t_times[i][1] > timestep:
-                i = i+1
-
-    i = 0
-    if len(index_b) > 1:
-        while i < len(b_times) - 1:
-            if b_times[i + 1][0] - b_times[i][1] <= timestep:
-                b_times[i + 1] = (b_times[i][0], b_times[i + 1][1])
-                del b_times[i]
-            elif b_times[i + 1][0] - b_times[i][1] > timestep:
-                i = i+1
+        if x < brady_bound:
+            diag.append("Bradycardia")
+        elif x > tachy_bound:
+            diag.append("Tachycardia")
+        elif x >= brady_bound & x <= tachy_bound:
+            diag.append("Normal")
+            
+    n_times = time_ranges(diag, times, "Normal")
+    b_times = time_ranges(diag, times, "Bradycardia")
+    t_times = time_ranges(diag, times, "Tachycardia")
+    
 
     if display_time_ranges:
         time_range = "Time ranges: Patient had a normal heart rate between {}, " \
@@ -81,33 +50,10 @@ def detect_cardia(inst_hr, times, display_time_ranges=True, diagnosis_time_thres
     else:
         time_range = ''
 
-    i = 0
-    if t_times != []:
-        for x in t_times:
-            if t_times[i][1]-t_times[i][0] >= diagnosis_time_threshold:
-                diagnosis1 = 'Tachycardia detected'
-                break
-            else:
-                diagnosis1 = 'No Tachycardia detected'
-            i += 1
-    else:
-        diagnosis1 = 'No Tachycardia detected'
+    # overall diagnosis based on diagnosis threshold set by user
+    final_diagnosis = diagnosis(b_times, t_times, diagnosis_time_threshold)
 
-    i = 0
-    if b_times != []:
-        for x in b_times:
-            if b_times[i][1]-b_times[i][0] >= diagnosis_time_threshold:
-                diagnosis2 = 'Bradycardia detected'
-                break
-            else:
-                diagnosis2 = 'No Bradycardia detected'
-            i += 1
-    else:
-        diagnosis2 = 'No Bradycardia detected'
-
-    diagnosis = "Diagnosis: {}, {}" .format(diagnosis1, diagnosis2)
-
-    return [time_range, diagnosis]
+    return [time_range, final_diagnosis]
 
 
 

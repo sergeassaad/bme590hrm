@@ -11,17 +11,17 @@ from InstHR import ihr
 
 
 def main():
-
+  
     kwargs = {'time_bound1': 0, 'time_bound2': float('INF'),
-              'display_time_ranges': True, 'diagnosis_time_threshold': 1}
+              'display_time_ranges': True, 'diagnosis_time_threshold': 1, 'brady_bound': 60, 'tachy_bound':100}
     combo(**kwargs)
 
-
 def combo(time_bound1, time_bound2, display_time_ranges,
-          diagnosis_time_threshold, input_filename='test_data/test_data1.csv',
+          diagnosis_time_threshold, brady_bound, tachy_bound, input_filename='test_data/test_data1.csv',
           output_filename='output.txt'):
 
     data = readcsv(input_filename)
+
     times = data[0]
     voltages = data[1]
 
@@ -31,7 +31,7 @@ def combo(time_bound1, time_bound2, display_time_ranges,
 
     avg_hr_value = avghr(times, voltages, time_bound1, time_bound2)
 
-    data_3 = detect_cardia(heart_rates, time_pairs, display_time_ranges,
+    data_3 = detect_cardia(heart_rates, time_pairs, brady_bound, tachy_bound, display_time_ranges,
                            diagnosis_time_threshold)
     time_ranges = data_3[0]
     diagnosis = data_3[1]
