@@ -23,10 +23,12 @@ def avghr_unbound(times, voltages):
             peak_count += 1
             peak_times.append(times[i])
 
-    return SECONDS_PER_MIN * peak_count / (peak_times[-1] - peak_times[0])
+    return SECONDS_PER_MIN* peak_count / (peak_times[-1] - peak_times[0])
 
 
 def avghr(times, voltages, t1=0, t2=float('inf')):
+    if len(times) == 0 or len(voltages) == 0:
+        raise ValueError('Empty arrays!')
     if t1 < times[0]:
         t1 = times[0]
     if t2 > times[len(times) - 1]:
