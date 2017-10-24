@@ -9,7 +9,7 @@ class HRM:
     -   detect_cardia (finds brady- and tachycardia occurrences)
     """
     def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None, display_time_ranges=True,
-                 diagnosis_time_threshold=1):
+                 diagnosis_time_threshold=1, averaging_period = 1):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
@@ -20,6 +20,7 @@ class HRM:
             t2 = self.times[len(self.times)-1]
         self.t1 = t1
         self.t2 = t2
+        self.averaging_period = averaging_period
         self.instant_hr = []
         self.ihr_times = []
         self.display_time_ranges = display_time_ranges
