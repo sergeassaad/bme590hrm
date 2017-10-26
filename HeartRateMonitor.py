@@ -66,6 +66,7 @@ class HRM:
                                      float(
                                          time_pairs[i][1] - time_pairs[i][0])))
         self.ihr_times, self.instant_hr = time_pairs, heart_rates
+        return self.instant_hr
 
     def detect_cardia(self):
         from Cardia import detect_cardia
