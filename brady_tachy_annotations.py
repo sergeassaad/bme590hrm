@@ -30,7 +30,7 @@ def cardia_annotations(list, brady_bound, tachy_bound):
         elif x < tachy_bound:
             tachy.append("false")
 
-    return [brady, tachy]
+    return brady, tachy
 
 
 
