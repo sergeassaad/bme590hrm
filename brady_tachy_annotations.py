@@ -23,14 +23,14 @@ def cardia_annotations(list, brady_bound, tachy_bound):
     for x in list:
         if x <= brady_bound:
             brady.append("true")
-        elif x > brady_bound:
+        if x > brady_bound:
             brady.append("false")
-        elif x >= tachy_bound:
+        if x >= tachy_bound:
             tachy.append("true")
-        elif x < tachy_bound:
+        if x < tachy_bound:
             tachy.append("false")
 
-    return brady, tachy
+    return [brady, tachy]
 
 
 

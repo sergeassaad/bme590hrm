@@ -25,6 +25,13 @@ def detect_cardia_cloud(inst_hr, avg_hr, brady_bound=60, tachy_bound=100):
 
     return brady_inst_hr, tachy_inst_hr, brady_avg_hr, tachy_avg_hr
 
+if __name__ == '__main__':
+    [brady_inst_hr, tachy_inst_hr] = cardia_annotations([60,100, 50, 20, 200], 60, 100)
+    [brady_avg_hr, tachy_avg_hr] = cardia_annotations([60, 100, 50, 20, 200], 60, 100)
+
+    print (brady_inst_hr, tachy_inst_hr, brady_avg_hr, tachy_avg_hr)
+
+
 
 
 
