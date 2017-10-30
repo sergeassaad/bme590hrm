@@ -14,6 +14,7 @@ class HRM:
         self.voltages = voltages
         self.time_units = time_units
         self.average_hr = None
+        self.avghr_list = None
         if t1 is None:
             t1 = self.times[0]
         if t2 is None:
@@ -37,7 +38,9 @@ class HRM:
         -	Output: 1 value for average heart rate for the specified time range
         """
         from AvgHR import avghr
+        from AvgHR import avghr_period
         self.average_hr = avghr(self.times, self.voltages, self.t1, self.t2)
+        self.avghr_list = avghr_period(self.times, self.voltages, self.averaging_period)
         return self.average_hr
 
     def ihr(self):

@@ -24,18 +24,25 @@ def test_avghr():
 
 def test_avghr_period():
     import math
-    averaging_period = 20
-    hrlist_values = [48, 96, 144]
+    averaging_period = 2
+    hrlist_values = 48
 
     filename = 'ECG_dummy_data_1_avgHR.csv'
     mylist = readcsv(filename)
     times = mylist[0]
+    print('times0: %f' % times[0])
+    print('times1: %f' % times[1])
     voltages = mylist[1]
 
     dt = times[1]-times[0]
     number_of_samples = int(math.floor(averaging_period/dt))
 
-    hrlist = [hrlist_values[0]] * number_of_samples
+    number_of_windows = int(math.floor(len(times)/number_of_samples))
+
+    hrlist = [hrlist_values] * number_of_windows
 
     myHRM = HRM(times, voltages, averaging_period = averaging_period)
-    assert myHRM.avghr() == hrlist
+    myHRM.avghr()
+    print(len(myHRM.avghr_list))
+    print(len(hrlist))
+    assert myHRM.avghr_list == hrlist
