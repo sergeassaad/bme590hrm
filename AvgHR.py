@@ -11,8 +11,6 @@ def avghr_unbound(times, voltages):
     SECONDS_PER_MIN = 60.0
     if(len(times)== 0 or len(times) == 1):
         return 0
-    # print('times0: %f' % times[0])
-    # print('times1: %f' % times[len(times)-1])
     dt = times[1] - times[0]  # assume constant sampling rate
     threshold_constant = 0.7
     voltage_range = max(voltages) - min(voltages)
@@ -24,11 +22,9 @@ def avghr_unbound(times, voltages):
                 and voltages[i] > threshold:
             peak_count += 1
             peak_times.append(times[i])
-    print peak_times
-    print peak_count
+
     if(peak_count ==0):
         return 0
-    # print('denom: %f' % (peak_times[-1] - peak_times[0]))
     time_range = peak_times[-1] - peak_times[0]
 
     if(peak_count==1):
