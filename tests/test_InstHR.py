@@ -38,7 +38,9 @@ def test_hr_calc():
 
 def test_class():
     from HeartRateMonitor import HRM
+    from math import isnan
     obj = HRM(t, v)
     obj.ihr()
     assert obj.ihr_times == t
+    assert isnan(obj.instant_hr[0]) is True
     assert obj.instant_hr[4000] == 174.0
