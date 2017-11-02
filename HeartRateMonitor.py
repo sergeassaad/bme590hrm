@@ -47,7 +47,7 @@ class HRM:
         return self.average_hr
 
     def ihr(self):
-        times = []
+        peak_times = []
         voltages = []
         heart_rates = []
         max_v = float(max(self.voltages))
@@ -59,20 +59,30 @@ class HRM:
             if (self.voltages[i] >= threshold and
                     self.voltages[i] >= self.voltages[i - 1] and
                     self.voltages[i] > self.voltages[i + 1]):
-                if round(self.times[i], 3) not in times:
-                    times.append(round(self.times[i], 3))
+                if round(self.times[i], 3) not in peak_times:
+                    peak_times.append(round(self.times[i], 3))
                     voltages.append(self.voltages[i])
 
         time_pairs = []
 
-        for i in range(len(times) - 1):
-            time_pairs.append((times[i], times[i + 1]))
+        for i in range(len(peak_times) - 1):
+            time_pairs.append((peak_times[i], peak_times[i + 1]))
 
         for i in range(len(time_pairs)):
             heart_rates.append(round(60 /
                                      float(
                                          time_pairs[i][1] - time_pairs[i][0])))
-        self.ihr_times, self.instant_hr = time_pairs, heart_rates
+
+        instant_hr = [float('nan') for _ in range(len(self.times))]
+
+        for i in range(len(self.times)):
+            for j in range(len(time_pairs)):
+                if self.times[i] >= time_pairs[j][0] and \
+                                self.times[i] <= time_pairs[j][1]:
+                    instant_hr[i] = heart_rates[j]
+
+        self.ihr_times = self.times
+        self.instant_hr = instant_hr
         return self.instant_hr
 
     def detect_cardia(self):

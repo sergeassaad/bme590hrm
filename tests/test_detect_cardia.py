@@ -27,7 +27,7 @@ obj.detect_cardia()
 def test_detect_cardia_class():
     assert obj.tachy_avg == ['true']
     assert obj.brady_avg == ['false']
-    assert obj.tachy_inst == ['true', 'true', 'true', 'true', 'true', 'true', 'true']
-    assert obj.brady_inst == ['false', 'false', 'false', 'false', 'false', 'false', 'false']
+    assert obj.tachy_inst[4000] == 'true'
+    assert obj.brady_inst[4000] == 'false'
 
 
