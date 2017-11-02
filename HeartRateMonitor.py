@@ -13,6 +13,8 @@ class HRM:
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
+        self.brady_bound = brady_bound
+        self.tachy_bound = tachy_bound
         self.average_hr = None
         self.avghr_list = None
         if t1 is None:
