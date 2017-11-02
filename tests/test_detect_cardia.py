@@ -16,15 +16,17 @@ v = []
 for i in range(1, len(exampleData)):
     t.append(float(exampleData[i][0]))
     v.append(float(exampleData[i][1]))
+averaging_period = 20
 
-obj = HRM(t, v)
+obj = HRM(t, v, averaging_period = averaging_period)
 obj.ihr()
+obj.avghr()
 obj.detect_cardia()
 
 def test_detect_cardia_class():
-    assert obj.DetectCardia == ['Time ranges: Patient had a normal heart rate between [], had tachycardia '
-                                'between [(0.173, 2.767)], and had bradycardia between []', 'Diagnosis: '
-                                                                                            'Tachycardia detected, '
-                                                                                            'No Bradycardia detected']
+    assert obj.tachy_avg == ['true']
+    assert obj.brady_avg == ['false']
+    assert obj.tachy_inst == ['true', 'true', 'true', 'true', 'true', 'true', 'true']
+    assert obj.brady_inst == ['false', 'false', 'false', 'false', 'false', 'false', 'false']
 
 

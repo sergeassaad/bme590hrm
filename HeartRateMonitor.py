@@ -30,7 +30,6 @@ class HRM:
         self.brady_avg=[]
         self.tachy_inst = []
         self.brady_inst = []
-        self.DetectCardia = []
 
     def avghr(self):
         """
