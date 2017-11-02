@@ -8,8 +8,8 @@ class HRM:
     -	ihr (calculates instantaneous HR)
     -   detect_cardia (finds brady- and tachycardia occurrences)
     """
-    def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None, display_time_ranges=True,
-                 diagnosis_time_threshold=1, averaging_period = 1):
+    def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None,
+                averaging_period = 1, brady_bound= 60, tachy_bound=100):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
@@ -24,8 +24,10 @@ class HRM:
         self.averaging_period = averaging_period
         self.instant_hr = []
         self.ihr_times = []
-        self.display_time_ranges = display_time_ranges
-        self.diagnosis_time_threshold = diagnosis_time_threshold
+        self.tachy_avg = []
+        self.brady_avg=[]
+        self.tachy_inst = []
+        self.brady_inst = []
         self.DetectCardia = []
 
     def avghr(self):
@@ -73,7 +75,7 @@ class HRM:
         return self.instant_hr
 
     def detect_cardia(self):
-        from Cardia import detect_cardia
-        self.DetectCardia = detect_cardia(self.instant_hr, self.ihr_times, self.display_time_ranges,
-                                          self.diagnosis_time_threshold)
+        from Cardia_CloudECG import detect_cardia_cloud
+        [self.brady_inst, self.tachy_inst, self.brady_avg, self.tachy_avg] = detect_cardia_cloud(self.instant_hr, self.avghr_list, self.brady_bound,
+                                          self.tachy_bound)
 

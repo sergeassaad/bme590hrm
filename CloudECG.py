@@ -10,7 +10,10 @@ def cloud_ecg_summary():
 
     obj = HRM(request.json['time'], request.json['voltage'])
     instant_hr = obj.ihr()[1]
-    tachycardia, bradycardia = obj.detect_cardia()
+    obj.avghr()
+    obj.detect_cardia()
+    tachycardia = obj.tachy_inst
+    bradycardia = obj.brady_inst
 
     output = {"time": obj.times, "instantaneous_heart_rate": instant_hr,
               "tachycardia_annotations": tachycardia,
@@ -25,7 +28,9 @@ def cloud_ecg_average():
     obj = HRM(request.json['time'], request.json['voltage'],averaging_period = request.json['averaging_period'])
     obj.ihr()
     obj.avghr()
-    tachycardia, bradycardia = obj.detect_cardia()
+    obj.detect_cardia()
+    tachycardia = obj.tachy_avg
+    bradycardia = obj.brady_avg
 
     output = {"averaging_period": request.json['averaging_period'],"time_interval": request.json['time'] , "average_heart_rate": obj.avghr_list,
               "tachycardia_annotations": tachycardia,
