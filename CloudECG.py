@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 req_num = 0
 
+
 @app.route("/heart_rate/summary", methods=['POST'])
 def cloud_ecg_summary():
     from HeartRateMonitor import HRM
@@ -28,18 +29,22 @@ def cloud_ecg_average():
     from HeartRateMonitor import HRM
     global req_num
     req_num += 1
-    obj = HRM(request.json['time'], request.json['voltage'],averaging_period = request.json['averaging_period'])
+    obj = HRM(request.json['time'], request.json['voltage'],
+              averaging_period = request.json['averaging_period'])
     obj.ihr()
     obj.avghr()
     obj.detect_cardia()
     tachycardia = obj.tachy_avg
     bradycardia = obj.brady_avg
 
-    output = {"averaging_period": request.json['averaging_period'],"time_interval": request.json['time'] , "average_heart_rate": obj.avghr_list,
+    output = {"averaging_period": request.json['averaging_period'],
+              "time_interval": request.json['time'],
+              "average_heart_rate": obj.avghr_list,
               "tachycardia_annotations": tachycardia,
               "bradycardia_annotations": bradycardia}
 
     return jsonify(output)
+
 
 @app.route("/api/requests")
 def count_requests():
