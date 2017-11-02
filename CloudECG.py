@@ -4,21 +4,11 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-def send_error(message, code):
-    err = {
-        "error": message
-    }
-    return jsonify(err), code
-
-
 @app.route("/heart_rate/summary", methods=['POST'])
 def cloud_ecg_summary():
     from HeartRateMonitor import HRM
-    try:
-        obj = HRM(request.json['time'], request.json['voltage'])
-    except ValueError:
-        return send_error("Improper times and/or voltages array", 400)
 
+    obj = HRM(request.json['time'], request.json['voltage'])
     instant_hr = obj.ihr()[1]
     tachycardia, bradycardia = obj.detect_cardia()
 

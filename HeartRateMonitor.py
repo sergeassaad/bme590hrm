@@ -8,11 +8,13 @@ class HRM:
     -	ihr (calculates instantaneous HR)
     -   detect_cardia (finds brady- and tachycardia occurrences)
     """
-    def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None, display_time_ranges=True,
-                 diagnosis_time_threshold=1, averaging_period = 1):
+    def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None,
+                averaging_period=1, brady_bound=60, tachy_bound=100):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
+        self.brady_bound = brady_bound
+        self.tachy_bound = tachy_bound
         self.average_hr = None
         self.avghr_list = None
         if t1 is None:
@@ -24,9 +26,10 @@ class HRM:
         self.averaging_period = averaging_period
         self.instant_hr = []
         self.ihr_times = []
-        self.display_time_ranges = display_time_ranges
-        self.diagnosis_time_threshold = diagnosis_time_threshold
-        self.DetectCardia = []
+        self.tachy_avg = []
+        self.brady_avg=[]
+        self.tachy_inst = []
+        self.brady_inst = []
 
     def avghr(self):
         """
@@ -44,7 +47,7 @@ class HRM:
         return self.average_hr
 
     def ihr(self):
-        times = []
+        peak_times = []
         voltages = []
         heart_rates = []
         max_v = float(max(self.voltages))
@@ -56,24 +59,35 @@ class HRM:
             if (self.voltages[i] >= threshold and
                     self.voltages[i] >= self.voltages[i - 1] and
                     self.voltages[i] > self.voltages[i + 1]):
-                if round(self.times[i], 3) not in times:
-                    times.append(round(self.times[i], 3))
+                if round(self.times[i], 3) not in peak_times:
+                    peak_times.append(round(self.times[i], 3))
                     voltages.append(self.voltages[i])
 
         time_pairs = []
 
-        for i in range(len(times) - 1):
-            time_pairs.append((times[i], times[i + 1]))
+        for i in range(len(peak_times) - 1):
+            time_pairs.append((peak_times[i], peak_times[i + 1]))
 
         for i in range(len(time_pairs)):
             heart_rates.append(round(60 /
                                      float(
                                          time_pairs[i][1] - time_pairs[i][0])))
-        self.ihr_times, self.instant_hr = time_pairs, heart_rates
+
+        instant_hr = [float('nan') for _ in range(len(self.times))]
+
+        for i in range(len(self.times)):
+            for j in range(len(time_pairs)):
+                if self.times[i] >= time_pairs[j][0] and \
+                                self.times[i] <= time_pairs[j][1]:
+                    instant_hr[i] = heart_rates[j]
+
+        self.ihr_times = self.times
+        self.instant_hr = instant_hr
         return self.instant_hr
 
     def detect_cardia(self):
-        from Cardia import detect_cardia
-        self.DetectCardia = detect_cardia(self.instant_hr, self.ihr_times, self.display_time_ranges,
-                                          self.diagnosis_time_threshold)
+        from Cardia_CloudECG import detect_cardia_cloud
+        [self.brady_inst, self.tachy_inst, self.brady_avg, self.tachy_avg] = \
+            detect_cardia_cloud(self.instant_hr, self.avghr_list, self.brady_bound,
+                                          self.tachy_bound)
 
