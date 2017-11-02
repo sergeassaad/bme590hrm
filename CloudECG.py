@@ -9,7 +9,7 @@ def cloud_ecg_summary():
     from HeartRateMonitor import HRM
 
     obj = HRM(request.json['time'], request.json['voltage'])
-    instant_hr = obj.ihr()[1]
+    instant_hr = obj.ihr()
     obj.avghr()
     obj.detect_cardia()
     tachycardia = obj.tachy_inst
