@@ -2,12 +2,13 @@
 """
 from flask import Flask, request, jsonify
 app = Flask(__name__)
-
+req_num = 0
 
 @app.route("/heart_rate/summary", methods=['POST'])
 def cloud_ecg_summary():
     from HeartRateMonitor import HRM
-
+    global req_num
+    req_num += 1
     obj = HRM(request.json['time'], request.json['voltage'])
     instant_hr = obj.ihr()
     obj.avghr()
@@ -25,6 +26,8 @@ def cloud_ecg_summary():
 @app.route("/heart_rate/average", methods=['POST'])
 def cloud_ecg_average():
     from HeartRateMonitor import HRM
+    global req_num
+    req_num += 1
     obj = HRM(request.json['time'], request.json['voltage'],averaging_period = request.json['averaging_period'])
     obj.ihr()
     obj.avghr()
@@ -37,3 +40,7 @@ def cloud_ecg_average():
               "bradycardia_annotations": bradycardia}
 
     return jsonify(output)
+
+@app.route("/api/requests")
+def count_requests():
+    return jsonify({"number_of_requests": req_num})
