@@ -22,13 +22,12 @@ def cloud_ecg_summary():
 @app.route("/heart_rate/average", methods=['POST'])
 def cloud_ecg_average():
     from HeartRateMonitor import HRM
-
-    obj = HRM(request.json['time'], request.json['voltage'])
+    obj = HRM(request.json['time'], request.json['voltage'],averaging_period = request.json['averaging_period'])
     obj.ihr()
     obj.avghr()
     tachycardia, bradycardia = obj.detect_cardia()
 
-    output = {"averaging_period": ,"time_interval": , "average_heart_rate": ,
+    output = {"averaging_period": request.json['averaging_period'],"time_interval": request.json['time'] , "average_heart_rate": obj.avghr_list,
               "tachycardia_annotations": tachycardia,
               "bradycardia_annotations": bradycardia}
 
