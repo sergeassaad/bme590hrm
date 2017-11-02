@@ -26,7 +26,6 @@ def avghr_unbound(times, voltages):
     if(peak_count ==0):
         return 0
     time_range = peak_times[-1] - peak_times[0]
-
     if(peak_count==1):
         time_range = times[-1]-times[0]
     return SECONDS_PER_MIN* peak_count /time_range
