@@ -9,7 +9,7 @@ class HRM:
     -   detect_cardia (finds brady- and tachycardia occurrences)
     """
     def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None,
-                averaging_period = 1, brady_bound= 60, tachy_bound=100):
+                averaging_period=1, brady_bound=60, tachy_bound=100):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
@@ -77,6 +77,7 @@ class HRM:
 
     def detect_cardia(self):
         from Cardia_CloudECG import detect_cardia_cloud
-        [self.brady_inst, self.tachy_inst, self.brady_avg, self.tachy_avg] = detect_cardia_cloud(self.instant_hr, self.avghr_list, self.brady_bound,
+        [self.brady_inst, self.tachy_inst, self.brady_avg, self.tachy_avg] = \
+            detect_cardia_cloud(self.instant_hr, self.avghr_list, self.brady_bound,
                                           self.tachy_bound)
 

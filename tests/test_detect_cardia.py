@@ -18,10 +18,11 @@ for i in range(1, len(exampleData)):
     v.append(float(exampleData[i][1]))
 averaging_period = 20
 
-obj = HRM(t, v, averaging_period = averaging_period)
+obj = HRM(t, v, averaging_period=averaging_period)
 obj.ihr()
 obj.avghr()
 obj.detect_cardia()
+
 
 def test_detect_cardia_class():
     assert obj.tachy_avg == ['true']
