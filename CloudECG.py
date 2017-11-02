@@ -2,12 +2,12 @@
 """
 from flask import Flask, request, jsonify
 app = Flask(__name__)
-global req_num
 req_num = 0
 
 @app.route("/heart_rate/summary", methods=['POST'])
 def cloud_ecg_summary():
     from HeartRateMonitor import HRM
+    global req_num
     req_num += 1
     obj = HRM(request.json['time'], request.json['voltage'])
     instant_hr = obj.ihr()
@@ -26,6 +26,7 @@ def cloud_ecg_summary():
 @app.route("/heart_rate/average", methods=['POST'])
 def cloud_ecg_average():
     from HeartRateMonitor import HRM
+    global req_num
     req_num += 1
     obj = HRM(request.json['time'], request.json['voltage'],averaging_period = request.json['averaging_period'])
     obj.ihr()
