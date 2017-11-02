@@ -9,17 +9,19 @@ class HRM:
     -   detect_cardia (finds brady- and tachycardia occurrences)
     """
     def __init__(self, times=[], voltages=[], time_units='s', t1=None, t2=None, display_time_ranges=True,
-                 diagnosis_time_threshold=1):
+                 diagnosis_time_threshold=1, averaging_period = 1):
         self.times = times
         self.voltages = voltages
         self.time_units = time_units
         self.average_hr = None
+        self.avghr_list = None
         if t1 is None:
             t1 = self.times[0]
         if t2 is None:
             t2 = self.times[len(self.times)-1]
         self.t1 = t1
         self.t2 = t2
+        self.averaging_period = averaging_period
         self.instant_hr = []
         self.ihr_times = []
         self.display_time_ranges = display_time_ranges
@@ -36,7 +38,9 @@ class HRM:
         -	Output: 1 value for average heart rate for the specified time range
         """
         from AvgHR import avghr
+        from AvgHR import avghr_period
         self.average_hr = avghr(self.times, self.voltages, self.t1, self.t2)
+        self.avghr_list = avghr_period(self.times, self.voltages, self.averaging_period)
         return self.average_hr
 
     def ihr(self):
