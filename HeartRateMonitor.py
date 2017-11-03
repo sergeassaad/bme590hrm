@@ -86,6 +86,15 @@ class HRM:
         return self.instant_hr
 
     def detect_cardia(self):
+        """
+        Cardia_CloudECG.py
+        ========
+        detect_cardia_cloud:
+
+        -	Input: List of instantaneous heart rates, list of average heart rates, bradycardia threshold,
+            tachycardia threshold
+        -	Output: bradycardia and tachycardia annotations for instantaneous and average heart rate lists
+        """
         from Cardia_CloudECG import detect_cardia_cloud
         [self.brady_inst, self.tachy_inst, self.brady_avg, self.tachy_avg] = \
             detect_cardia_cloud(self.instant_hr, self.avghr_list, self.brady_bound,

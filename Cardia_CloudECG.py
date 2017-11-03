@@ -12,8 +12,8 @@ def detect_cardia_cloud(inst_hr, avg_hr, brady_bound=60, tachy_bound=100):
     Four input arguments:
         -arg 1: an instantaneous HR array
         -arg 2: an average HR array
-        -arg 2: bound for bradycardia
-        -arg 3: bound for tachycardia
+        -arg 2: threshold for bradycardia
+        -arg 3: threshold for tachycardia
 
     Two outputs:
         -brady: bradycardia annotations
