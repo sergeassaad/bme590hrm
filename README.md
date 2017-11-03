@@ -1,6 +1,28 @@
 ![alt text](https://travis-ci.org/sergeassaad/bme590hrm.svg?branch=master)
 
-Heart Rate Monitor
+CloudECG
+========
+
+Web server implementation using Flask. Uses the HRM class for calculations.
+
+Routes:
+=======
+
+- /heart_rate/summary:
+    input: time array, voltage array
+    output: time array, instantaneous HR array, tachy- and bradycardia annotations
+
+- /heart_rate/average:
+    input: time array, voltage array, averaging period
+    output: averaging period, time array, average HR array, tachy- and bradycardia annotations
+
+- /api/requests:
+    output: number of requests to server since last reboot
+
+
+
+
+Heart Rate Monitor (HRM) Class
 ==================
 
 Heart Rate Monitor which takes in time and voltage data and outputs instantaneous HR, average HR, and diagnoses bradycardia and tachycardia.
