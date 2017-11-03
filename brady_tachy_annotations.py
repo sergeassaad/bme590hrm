@@ -1,3 +1,5 @@
+from math import isnan
+
 def cardia_annotations(list, brady_bound, tachy_bound):
 
     """cardia_annotations
@@ -29,6 +31,9 @@ def cardia_annotations(list, brady_bound, tachy_bound):
             tachy.append("true")
         if x < tachy_bound:
             tachy.append("false")
+        if isnan(x) == True:
+            brady.append(float("NaN"))
+            tachy.append(float("NaN"))
 
     return [brady, tachy]
 
