@@ -3,8 +3,13 @@ AvgHR.py
 ========
 avghr:
 
--	Input: Lists of times, list of voltages, lower time bound, upper time bound
+-	Input: List of times, list of voltages, lower time bound, upper time bound
 -	Output: 1 value for average heart rate for the specified time range
+
+avghr_period:
+
+- Input: List of times, list of voltages, averaging period
+- Output: Array of average heart rates for each averaging period
 """
 
 def avghr_unbound(times, voltages):
