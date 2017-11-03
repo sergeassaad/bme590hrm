@@ -5,6 +5,8 @@ CloudECG
 
 Web server implementation using Flask. Uses the HRM class for calculations.
 
+URL: http://vcm-1834.vm.duke.edu:5000/
+
 Routes:
 =======
 
