@@ -1,5 +1,22 @@
-""" Put Sphinx friendly docstring
 """
+
+CloudECG.py:
+Web server implementation using Flask. Uses the HRM class for calculations.
+
+routes:
+
+/heart_rate/summary:
+    input: time array, voltage array
+    output: time array, instantaneous HR array, tachy- and bradycardia annotations
+
+/heart_rate/average:
+    input: time array, voltage array, averaging period
+    output: averaging period, time array, average HR array, tachy- and bradycardia annotations
+
+/api/requests:
+    output: number of requests to server since last reboot
+"""
+
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 req_num = 0
