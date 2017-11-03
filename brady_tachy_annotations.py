@@ -11,8 +11,8 @@ def cardia_annotations(hr_list, brady_bound, tachy_bound):
 
     Four input arguments:
         -arg 1: any list, instant or average HR
-        -arg 2: bound for bradycardia
-        -arg 3: bound for tachycardia
+        -arg 2: threshold for bradycardia
+        -arg 3: threshold for tachycardia
 
     Two outputs:
         -brady: bradycardia annotations
