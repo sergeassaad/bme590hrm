@@ -49,15 +49,9 @@ ihr function:
 
 detect_cardia function:
 
--	User inputs: display_time_ranges and diagnosis_time_threshold
--	If display_time_ranges is set to True, the program outputs the time ranges during which the patient?s instantaneous heart rate was normal,
-    the time ranges during which tachycardia was detected (instantaneous heart rate was above 100 bpm) and the time ranges during which
-    bradycardia was detected (instantaneous heart rate was below 60 bpm)
--   If the user does not want to view these times ranges, he/she has the option of turning this off by setting display_time_ranges to False.
-    It is set to True by default
--   diagnosis_time_threshold asks the user to input the amount of time in seconds that the instantaneous heart rate must remain below 60bpm or above 100bpm
-    for the program to indicate that bradycardia or tachycardia was detected, respectively.
--   Essentially it is a threshold for the detection of bradycardia or tachycardia and is set to a default value of 1 second
+-	User inputs: bradycardia and tachycardia thresholds
+-   Other inputs: list of instantaneous heart rates and list of average heart rates
+-   Outputs: bradycardia and tachycardia annotations of average and instantaneous heart rates
 
 License
 =======
