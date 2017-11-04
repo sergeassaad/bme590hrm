@@ -47,6 +47,11 @@ class HRM:
         return self.average_hr
 
     def ihr(self):
+        """
+        ihr:
+        -	Input: Lists of times, list of voltages
+        -	Output: 1 value for instant heart rate for each specified time
+        """
         peak_times = []
         voltages = []
         heart_rates = []
