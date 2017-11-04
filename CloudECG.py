@@ -28,6 +28,7 @@ def send_error(message, code):
     }
     return jsonify(err), code
 
+
 @app.route("/heart_rate/summary", methods=['POST'])
 def cloud_ecg_summary():
     from HeartRateMonitor import HRM
@@ -58,7 +59,7 @@ def cloud_ecg_average():
     req_num += 1
     try:
         obj = HRM(request.json['time'], request.json['voltage'],
-              averaging_period = request.json['averaging_period'])
+                  averaging_period=request.json['averaging_period'])
     except ValueError:
         return send_error("Improper time & voltage arrays, averaging period", 400)
     obj.ihr()
